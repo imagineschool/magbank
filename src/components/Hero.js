@@ -1,11 +1,11 @@
 import React from 'react';
-import { Row, Col, Jumbotron, Button, Image } from 'react-bootstrap';
+import { Row, Col, Card, Button, Image } from 'react-bootstrap';
 import logo from '../assets/logo__magic-pay--mobile.png';
 import logoDesktop from '../assets/logo__magic-pay.png';
 import './Hero.scss';
 
 const Hero = () => (
-  <Jumbotron className='text-center text-light hero' fluid>
+  <Card className='text-center text-light hero'>
     <Row className='my-lg-5'>
       <Col lg className='text-lg-right my-lg-5'>
         <Image className='d-lg-none' src={logo} />
@@ -16,7 +16,7 @@ const Hero = () => (
         <Button variant='outline-light'>Abra sua conta</Button>
       </Col>
     </Row>
-  </Jumbotron>
+  </Card>
 );
 
 export default Hero;
