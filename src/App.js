@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AccountModal from './components/AccountModal';
@@ -13,24 +13,16 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <Router>
+    <>
       <Navbar handleCreateAcc={() => setShowModal(true)} />
-
-      <Switch>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/'>
-          <Home handleClick={() => setShowModal(true)} />
-        </Route>
-      </Switch>
-
+      <Routes>
+        <Route path="/" element={<Home handleClick={() => setShowModal(true)} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} /> 
+      </Routes>
       <Footer />
       <AccountModal show={showModal} handleClose={() => setShowModal(false)} />
-    </Router>
+    </>
   );
 };
 
