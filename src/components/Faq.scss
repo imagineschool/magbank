@@ -3,10 +3,17 @@
 .faq {
   background-color: $color-faq-background;
 
-  div.card {
-    background-color: unset;
-    .card-header {
+  .accordion-body {
+    background-color: $color-faq-background;
+  }
+
+  .accordion-button {
+    background-color: $color-faq-header;
+    color: #fff;
+
+    &:not(.collapsed) {
       background-color: $color-faq-header;
+      color: #fff;
     }
   }
 

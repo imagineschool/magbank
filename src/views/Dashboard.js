@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -14,9 +14,9 @@ const Dashboard = ({ className = false, name, account }) => {
   const [activeLink, setActiveLink] = useState(0);
 
   const links = [
-    { text: 'Minha Conta', path: '/dashboard' },
-    { text: 'Pagamentos', path: '/dashboard/payments' },
-    { text: 'Extrato', path: '/dashboard/history' },
+    { text: 'Minha Conta', path: '/' },
+    { text: 'Pagamentos', path: 'payments' },
+    { text: 'Extrato', path: 'history' },
   ];
 
   const data = {
@@ -65,7 +65,7 @@ const Dashboard = ({ className = false, name, account }) => {
                 }`}
                 variant='link'
                 size='lg'
-                block
+                block="true"
                 onClick={() => setActiveLink(key)}
               >
                 {text}
@@ -73,17 +73,11 @@ const Dashboard = ({ className = false, name, account }) => {
             </Link>
           ))}
         </Col>
-        <Switch>
-          <Route path='/dashboard/history'>
-            <AccountHistory data={data} />
-          </Route>
-          <Route path='/dashboard/payments'>
-            <AccountPayments />
-          </Route>
-          <Route path='/dashboard'>
-            <AccountBalance data={data} />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="history" element={<AccountHistory data={data} />} />
+          <Route path="payments" element={<AccountPayments />} />
+          <Route path="/" element={<AccountBalance data={data} />} />
+        </Routes>
       </Row>
     </Container>
   );

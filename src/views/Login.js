@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col, Form, Button, Image } from 'react-bootstrap';
 import logo from '../assets/MAGbank.svg';
 
@@ -8,10 +8,10 @@ import './Login.scss';
 const Login = ({ text, auth }) => {
   const [name, setName] = useState();
   const [account, setAccount] = useState();
-  const history = useHistory();
+  const navigate  = useNavigate();
 
   const handleSubmit = () => {
-    auth.login(name, account, history.push('/dashboard'));
+    auth.login(name, account, navigate('/dashboard'));
   };
 
   return (
@@ -27,7 +27,7 @@ const Login = ({ text, auth }) => {
                 </Form.Label>
                 <Form.Control
                   type='text'
-                  value={name}
+                  value={name || ''}
                   onChange={(e) => setName(e.currentTarget.value)}
                 />
               </Form.Group>
@@ -38,7 +38,7 @@ const Login = ({ text, auth }) => {
                 </Form.Label>
                 <Form.Control
                   type='number'
-                  value={account}
+                  value={account || ''}
                   onChange={(e) => setAccount(e.currentTarget.value)}
                 />
               </Form.Group>

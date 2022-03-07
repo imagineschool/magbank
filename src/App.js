@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AccountModal from './components/AccountModal';
@@ -14,12 +9,9 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 
-const PrivateRoute = ({ children, logged, ...rest }) => (
-  <Route
-    {...rest}
-    render={() => (logged ? children : <Redirect to='/login' />)}
-  />
-);
+const PrivateRoute = ({ Component, logged }) => {
+  return logged ? <Component /> : <Navigate to="/login" />;
+};
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -41,32 +33,16 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Navbar
-        handleCreateAcc={() => setShowModal(true)}
-        logged={isLogged}
-        auth={fakeAuth}
-      />
-
-      <Switch>
-        <Route path='/login'>
-          <Login auth={fakeAuth} />
-        </Route>
-        <PrivateRoute path='/dashboard' logged={isLogged}>
-          <Dashboard name={name} account={account} />
-        </PrivateRoute>
-        <Route path='/'>
-          <Home handleClick={() => setShowModal(true)} />
-        </Route>
-      </Switch>
-
+    <div className='App'>
+      <Navbar handleCreateAcc={() => setShowModal(true)} logged={isLogged}  auth={fakeAuth} />
+      <Routes>
+        <Route path="/" element={<Home handleClick={() => setShowModal(true)} />} />
+        <Route path="/login" element={<Login auth={fakeAuth} />} />  
+        <Route path="/dashboard/*" element={<PrivateRoute Component={Dashboard} logged={isLogged}/>} />
+      </Routes>
       <Footer />
-      <AccountModal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-        auth={fakeAuth}
-      />
-    </Router>
+      <AccountModal show={showModal} handleClose={() => setShowModal(false)} auth={fakeAuth} />
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Accordion, Card } from 'react-bootstrap';
+import { Container, Row, Col, Accordion } from 'react-bootstrap';
 import IconText from './IconText';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -68,12 +68,9 @@ const Faq = () => {
 
           <Col>
             <Accordion defaultActiveKey='0' activeKey={`${index}`}>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey='0'>
-                  Lorem ipsum dolor sit amet
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey='0'>
-                  <Card.Body>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header> Lorem ipsum dolor sit amet</Accordion.Header>
+                <Accordion.Body className="accordion--bg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nullam tincidunt arcu vel arcu fermentum, eget accumsan
                     dolor dignissim. Nam eget quam semper, varius ligula sed,
@@ -83,15 +80,12 @@ const Faq = () => {
                     purus ante, congue vel arcu ac, porta condimentum mauris.
                     Maecenas massa orci, fringilla eget fermentum nec, dignissim
                     nec diam.
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey='1'>
-                  Nulla porttitor eros ac ex tristique posuere
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey='1'>
-                  <Card.Body>
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="1">
+                <Accordion.Header className="accordion--header">Nulla porttitor eros ac ex tristique posuere</Accordion.Header>
+                <Accordion.Body className="accordion--bg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nullam tincidunt arcu vel arcu fermentum, eget accumsan
                     dolor dignissim. Nam eget quam semper, varius ligula sed,
@@ -101,15 +95,12 @@ const Faq = () => {
                     purus ante, congue vel arcu ac, porta condimentum mauris.
                     Maecenas massa orci, fringilla eget fermentum nec, dignissim
                     nec diam.
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey='2'>
-                  Quisque fringilla tincidunt arcu
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey='2'>
-                  <Card.Body>
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>Quisque fringilla tincidunt arcu</Accordion.Header>
+                <Accordion.Body className="accordion--bg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nullam tincidunt arcu vel arcu fermentum, eget accumsan
                     dolor dignissim. Nam eget quam semper, varius ligula sed,
@@ -119,15 +110,12 @@ const Faq = () => {
                     purus ante, congue vel arcu ac, porta condimentum mauris.
                     Maecenas massa orci, fringilla eget fermentum nec, dignissim
                     nec diam.
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey='3'>
-                  Nam elementum lobortis purus a maximus tortor
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey='3'>
-                  <Card.Body>
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="3">
+                <Accordion.Header>Nam elementum lobortis purus a maximus tortor</Accordion.Header>
+                <Accordion.Body className="accordion--bg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nullam tincidunt arcu vel arcu fermentum, eget accumsan
                     dolor dignissim. Nam eget quam semper, varius ligula sed,
@@ -137,9 +125,8 @@ const Faq = () => {
                     purus ante, congue vel arcu ac, porta condimentum mauris.
                     Maecenas massa orci, fringilla eget fermentum nec, dignissim
                     nec diam.
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
+                </Accordion.Body>
+              </Accordion.Item>
             </Accordion>
           </Col>
         </Row>
