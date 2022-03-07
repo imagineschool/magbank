@@ -8,25 +8,24 @@ const AccountModal = ({ show, handleClose }) => (
     </Modal.Header>
     <Modal.Body>
       <Form>
-        <Form.Group controlId='formBasicName'>
+        <Form.Group>
           <Form.Label>Seu nome</Form.Label>
           <Form.Control type='text' placeholder='Seu nome' />
         </Form.Group>
 
-        <Form.Group controlId='formBasicEmail'>
+        <Form.Group>
           <Form.Label>Seu email</Form.Label>
           <Form.Control type='email' placeholder='Seu email' />
         </Form.Group>
 
-        <Form.Group controlId='formCity'>
+        <Form.Group>
           <Form.Label className='my-1 mr-2' htmlFor='formCitySelect'>
             Preference
           </Form.Label>
           <Form.Control
             as='select'
             className='my-1 mr-sm-2'
-            id='formCitySelect'
-            custom
+            custom="true"
           >
             <option value='0'>Florianópolis - SC</option>
             <option value='1'>Curitiba - PR</option>
@@ -35,7 +34,7 @@ const AccountModal = ({ show, handleClose }) => (
           </Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='formBasicCheckbox'>
+        <Form.Group>
           <Form.Check
             type='checkbox'
             label='Eu li e concordo com os termos de uso.'
