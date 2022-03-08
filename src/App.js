@@ -9,10 +9,6 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 
-const PrivateRoute = ({ Component, logged }) => {
-  return logged ? <Component /> : <Navigate to="/login" />;
-};
-
 const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState();
@@ -32,13 +28,17 @@ const App = () => {
     },
   };
 
+  const PrivateRoute = ({ Component, logged }) => {
+    return logged ? <Component name={name} account={account} /> : <Navigate to="/login" />;
+  };
+
   return (
     <div className='App'>
-      <Navbar handleCreateAcc={() => setShowModal(true)} logged={isLogged}  auth={fakeAuth} />
+      <Navbar handleCreateAcc={() => setShowModal(true)} logged={isLogged} auth={fakeAuth} />
       <Routes>
         <Route path="/" element={<Home handleClick={() => setShowModal(true)} />} />
-        <Route path="/login" element={<Login auth={fakeAuth} />} />  
-        <Route path="/dashboard/*" element={<PrivateRoute Component={Dashboard} logged={isLogged}/>} />
+        <Route path="/login" element={<Login auth={fakeAuth} />} />
+        <Route path="/dashboard/*" element={<PrivateRoute Component={Dashboard} logged={isLogged} />} />
       </Routes>
       <Footer />
       <AccountModal show={showModal} handleClose={() => setShowModal(false)} auth={fakeAuth} />
